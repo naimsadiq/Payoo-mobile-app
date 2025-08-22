@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- daisyUI cdn -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+    <!-- tailwind css cdn -->
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>payoo app</title>
+</head>
+<body class="flex flex-col justify-center items-center h-dvh bg-[#F4F5F7]">
+    <div class="w-[340px] h-[150px] bg-[url(./assets/bg.png)] bg-no-repeat bg-cover flex justify-center items-center">
+        <img src="./assets/Group.png" alt="">
+    </div>
+    <form class="w-[350px] bg-[#FFFFFF] p-[32px] rounded-[13px]">
+        <div class="">
+            <label class="font-semibold" for="">Mobile Number</label> <br>
+            <input id="mobile-number" type="text" placeholder="Enter your number" class="input w-full mt-[12px] rounded-[30px]" />
+        </div>
+        <div class="my-5">
+            <label class="font-semibold" for="">4 Digit Pin</label> <br>
+            <input id="pin-number" type="text" placeholder="Enter 4 Digit Pin" class="input w-full mt-[12px] rounded-[30px]" />
+        </div>
+        <button id="form-btn" class="btn btn-primary w-full rounded-[30px]">Log in</button>
+    </form>
+
+    <script src="./script.js"></script>
+</body>
+</html>
