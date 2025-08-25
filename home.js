@@ -1,5 +1,17 @@
 const accountNumberDigit = 11;
 const defultPinNumber = 1234;
+const bonusCoupon = 'naimsadiq';
+const bonusMoney = 5000;
+
+// small code function
+
+function formShow(id){
+    const forms = document.getElementsByClassName('form');
+    for(const form of forms){
+        form.style.display = 'none';
+    }
+    document.getElementById(id).style.display = 'block';
+}
 
 // add money feature
 document.getElementById('add-money-btn').addEventListener('click', function (event){
@@ -27,19 +39,56 @@ document.getElementById('withdraw-btn').addEventListener('click', function(event
     const cashOutValue = parseInt(document.getElementById('cash-out-amount').value);
     const availableBalance = parseInt(document.getElementById('available-balance').innerText) - cashOutValue;
     document.getElementById('available-balance').innerText = availableBalance;
-    console.log(availableBalance);
 })
 
+
+// Transfer Money feature 
+document.getElementById('send-now-btn').addEventListener('click', function(event){
+    event.preventDefault();
+    const transferAccountNumber = document.getElementById('transfer-money-account-number').value;
+    const transferPinNumber = parseInt(document.getElementById('transfer-money-pin-number').value);
+    if(transferAccountNumber.length !== accountNumberDigit || transferPinNumber !== defultPinNumber){
+        alert('Invalid Information');
+        return; 
+    }
+    const transferMoneyValue = parseInt(document.getElementById('transfer-money-amount').value);
+    const availableBalance = parseInt(document.getElementById('available-balance').innerText) - transferMoneyValue;
+    document.getElementById('available-balance').innerText = availableBalance;
+})
+
+
+// Get Bonus feature 
+document.getElementById('get-bonus-btn').addEventListener('click', function(event){
+    event.preventDefault();
+    const bonusCouponValue = document.getElementById('bonus-coupon').value;
+    if(bonusCouponValue !== bonusCoupon){
+        alert('Invalid Coupon');
+        return;
+    }
+    const availableBalance = parseInt(document.getElementById('available-balance').innerText) + bonusMoney;
+    document.getElementById('available-balance').innerText = availableBalance;
+    console.log(typeof(availableBalance));
+})
 
 // toggle feature 
 
 document.getElementById('add-money').addEventListener('click', function(){
-    document.getElementById('add-money-section').style.display = 'block';
-    document.getElementById('cash-out-section').style.display = 'none';
+    formShow('add-money-section')
 })
 
 
 document.getElementById('cash-out').addEventListener('click', function(){
-    document.getElementById('cash-out-section').style.display = 'block';
-    document.getElementById('add-money-section').style.display = 'none';
+    formShow('cash-out-section')
+})
+
+
+document.getElementById('transfer-money').addEventListener('click', function(){
+    formShow('transfer-money-section')
+})
+
+document.getElementById('get-bonus').addEventListener('click', function(){
+    formShow('get-bonus-section')
+})
+document.getElementById('pay-bill').addEventListener('click', function(){
+    formShow('pay-bill-section')
 })
